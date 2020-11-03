@@ -1,0 +1,22 @@
+driver:
+  name: terraform
+  command_timeout: 1800
+  # backend_configurations:
+  #   resource_group_name: "azrgp-int-01"
+  #   storage_account_name: "azstpint01"
+  #   container_name: "azctpint01"
+  #   key: "az_postgresql"
+
+provisioner:
+  name: terraform
+
+platforms:
+  - name: terraform
+
+suites:
+  - name: basic-example
+    driver:
+      root_module_directory: examples/basic-example/
+    verifier:
+      name: shell
+      command: pytest test/integration/basic-example/*.py
